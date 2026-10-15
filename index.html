@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的第一个网站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .info {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .time {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 我的第一个网站</h1>
+        <p>恭喜你！这是你部署到互联网上的第一个网站！</p>
+        <p>现在全世界的人都可以通过网址访问这个页面了！</p>
+        
+        <a href="#" class="button" onclick="showMessage()">点击我</a>
+        
+        <div class="info">
+            <p><strong>部署时间：</strong> <span class="time" id="deploy-time"></span></p>
+            <p><strong>访问统计：</strong> 你是第 <span id="visitor-count">1</span> 位访问者</p>
+            <p><strong>技术栈：</strong> HTML + CSS + JavaScript</p>
+        </div>
+    </div>
+
+    <script>
+        // 显示当前时间
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('deploy-time').textContent = 
+                now.getFullYear() + '年' + 
+                (now.getMonth() + 1) + '月' + 
+                now.getDate() + '日 ' + 
+                now.getHours() + ':' + 
+                String(now.getMinutes()).padStart(2, '0');
+        }
+        
+        // 随机访问者计数
+        function updateVisitorCount() {
+            const count = Math.floor(Math.random() * 1000) + 1;
+            document.getElementById('visitor-count').textContent = count;
+        }
+        
+        // 点击按钮的互动效果
+        function showMessage() {
+            alert('🎊 太棒了！你已经成功部署了你的第一个网站！\n现在你是一名真正的Web开发者了！');
+        }
+        
+        // 页面加载时执行
+        updateTime();
+        updateVisitorCount();
+        
+        // 每分钟更新时间
+        setInterval(updateTime, 60000);
+    </script>
+</body>
+</html>
